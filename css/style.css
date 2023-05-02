@@ -114,6 +114,10 @@ span {
     color: #BD5D38;
 }
 
+.topic-detail {
+    font-size: larger;
+}
+
 .tick-mark {
     list-style: none;
 }
@@ -136,4 +140,12 @@ span {
 .proj-list > a > img {
     width: 250px;
     height: 250px;
+}
+
+#awards > a {
+    color: #343A40;
+    text-decoration: none;
+}
+#awards > a:hover {
+    color: #BD5D38;
 }
