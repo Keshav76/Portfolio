@@ -32,7 +32,7 @@ function navbarLinkClick(event) {
 }
 
 document.addEventListener('scroll', () => {
-    let scroll = scrollY;
+    let scroll = scrollY + 200;
     if (scroll < elements[1].offsetTop)
         changeColor('about');
     else if (scroll < elements[2].offsetTop)
