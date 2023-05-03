@@ -1,9 +1,9 @@
-const navbarMenu = document.querySelector("nav a");
 const navbarLinks = document.querySelectorAll("nav a");
-
+const elements = new Array(navbarLinks.length);
 
 for(let i=0; i<navbarLinks.length; i++) {
   navbarLinks[i].addEventListener("click", navbarLinkClick);
+  elements[i] = document.querySelector( navbarLinks[i].getAttribute('href'));
 }
 
 function navbarLinkClick(event) {
@@ -33,21 +33,21 @@ function navbarLinkClick(event) {
 
 document.addEventListener('scroll', () => {
     let scroll = scrollY;
-    if (scroll < 600)
+    if (scroll < elements[1].offsetTop)
         changeColor('about');
-    else if (scroll >= 600 && scroll < 1200)
+    else if (scroll < elements[2].offsetTop)
         changeColor("experience");
-    else if (scroll >= 1200 && scroll < 1800) 
+    else if (scroll < elements[3].offsetTop) 
         changeColor("education");
-    else if (scroll >= 1800 && scroll < 2400) 
+    else if (scroll < elements[4].offsetTop) 
         changeColor("skills");
-    else if (scroll >= 2400 && scroll < 3000)
+    else if (scroll < elements[5].offsetTop)
         changeColor("projects");
-    else if (scroll >= 3000 && scroll < 3600) 
+    else if (scroll < elements[6].offsetTop) 
         changeColor("interests");
-    else if (scroll >= 3600 && scroll < 4200)
+    else if (scroll < elements[7].offsetTop)
         changeColor("awards");
-    else if (scroll >= 4200 && scroll < 4800) 
+    else
         changeColor("contact");
 })
 
