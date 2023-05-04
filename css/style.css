@@ -15,7 +15,7 @@ body {
 nav {
     font-size: large;
     background-color: #BD5D38;
-    width: 20%;
+    width: max-content;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -23,6 +23,9 @@ nav {
     top: 0;
     align-items: center;
     justify-content: center;
+}
+.nav-temp {
+    display: none;
 }
 nav > * {
     margin: 10px;
@@ -60,7 +63,7 @@ h1, h2 {
 }
 
 .about-header{
-    font-size: 4.5pc;
+    font-size: calc(max(10vw, 3em));
     
 }
 span {
@@ -72,7 +75,7 @@ span {
 }
 
 .about-links {
-    margin: 50px 50px;
+    margin: 50px 0;
     font-size: larger;
 }
 
@@ -89,7 +92,7 @@ span {
 }
 
 .section-head {
-    font-size: 50px;
+    font-size: calc(max(5vw, 2.5em));
     margin-bottom: 40px;
 }
 
@@ -164,7 +167,7 @@ span {
     justify-content: center;
     /* align-items: center; */
     line-height: 45px;
-    font-size: x-large;
+    font-size: 1.3em;
 }
 
 .contact-details > div > i {
@@ -189,6 +192,7 @@ input, textarea {
     border-radius: 5px;
     border: 1px solid #343A40;
     outline: none;
+    font-size: 0.8em;
 }
 
 input:focus, textarea:focus{
@@ -197,13 +201,61 @@ input:focus, textarea:focus{
 
 input[type="submit"] {
     background-color: #343A40;
+    font-size: 1em;
     border: none;
     color: #ffffff;
     padding: 20px;
-    font-size: large;
     box-sizing: content-box;
 }
 
 input[type="submit"]:hover {
     background-color: #BD5D38;
 }
+
+#toggle-btn {
+    display: none;
+}
+@media screen and (min-width: 768px) {
+    nav {
+        height: 100vh;
+        width: fit-content;
+    }
+}
+
+@media  screen and (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    nav {
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+    }
+    .nav-temp {
+        display: block;
+        background-color: #BD5D38;
+        width: 100%;
+        height: 3em;
+        position: fixed;
+        top: 0;
+    }
+    #toggle-btn { 
+        color: #ffffff;
+        background-color: #BD5D38;
+        border: none;
+        font-size: x-large;
+        display: block;
+        position: fixed;
+        right: 0;
+        margin: 0.5em;
+        margin-right: 1em;
+    }
+    main {
+        width: 100%;
+    }
+    .topic-head {
+        flex-direction: column;
+    }
+
+}
+

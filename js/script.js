@@ -85,3 +85,41 @@ function makeApiCall(obj) {
         .then(result => alert("Submitted Successfully!"))
         .catch(error => alert('Some error occured while sending response. Try again later!'));
 }
+
+// Making responsive navbar
+const toggleBtn = document.getElementById('toggle-btn');
+const navBar = document.querySelector('nav');
+const navBarTemp = document.querySelector('.nav-temp');
+let state = 'close';
+toggleBtn.addEventListener('click', () => {
+    if (state === 'close') {
+        navBarTemp.style.display = "none";
+        navBar.style.height = "max-content";
+        toggleBtn.classList.remove('fa-bars');
+        toggleBtn.classList.add('fa-close');
+        state = 'open';
+    }
+    else {
+        navBar.style.height = "0px";
+        navBarTemp.style.display = "flex";
+        toggleBtn.classList.remove('fa-close');
+        toggleBtn.classList.add('fa-bars');
+        state = 'close';
+    }
+})
+
+window.addEventListener('resize', () => {
+    console.log(window.innerWidth)
+    if (window.innerWidth > 768) {
+        navBar.style.height = "100vh";
+        navBar.style.width = 'max-content';
+    }
+    else {
+        navBarTemp.style.display = 'flex';
+        if (state === 'close')
+            navBar.style.height = '0px';
+        else 
+            navBar.style.height = 'max-content'
+        navBar.style.width = '100%';
+    }
+})
