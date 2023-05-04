@@ -66,6 +66,11 @@ h1, h2 {
     font-size: calc(max(10vw, 3em));
     
 }
+
+.about-tagline {
+    font-size: calc(max(2vw, 1em));
+}
+
 span {
     color: #BD5D38;
 }

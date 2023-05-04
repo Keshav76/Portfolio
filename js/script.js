@@ -61,6 +61,7 @@ const changeColor = (str) => {
 }
 
 const form = document.querySelector("form");
+const submitBtn = document.querySelector('input[type="submit"]');
 document.addEventListener('submit', (event) => {
     event.preventDefault();
     const name = document.querySelector('#name').value;
@@ -75,6 +76,8 @@ document.addEventListener('submit', (event) => {
 })
 
 function makeApiCall(obj) {
+    submitBtn.value = 'Wait!';
+    submitBtn.disabled = true;
     const requestOptions = {
         method: 'POST',
         redirect: 'follow'
@@ -82,8 +85,19 @@ function makeApiCall(obj) {
     const api = `https://script.google.com/macros/s/AKfycbwIXEggragUFPOq3ZiMhWIDcMOFgwe-By2Rua_5g4mJ_fE8qt1sxFT5kKl_Al_hRlGP/exec?name=${obj.name}&email=${obj.email}&message=${obj.message}`
     fetch(api, requestOptions)
         .then(response => response.text())
-        .then(result => alert("Submitted Successfully!"))
-        .catch(error => alert('Some error occured while sending response. Try again later!'));
+        .then((result) => {
+            alert("Submitted Successfully!")
+            form.reset();
+            submitBtn.value = 'Submit';
+        })
+        .catch((error) => {
+            submitBtn.value = 'Retry';
+            alert('Some error occured while sending response. Try again later!')
+        })
+        .finally(()=>{
+            submitBtn.disabled = false;
+        });
+
 }
 
 // Making responsive navbar
@@ -109,7 +123,6 @@ toggleBtn.addEventListener('click', () => {
 })
 
 window.addEventListener('resize', () => {
-    console.log(window.innerWidth)
     if (window.innerWidth > 768) {
         navBar.style.height = "100vh";
         navBar.style.width = 'max-content';
@@ -118,7 +131,7 @@ window.addEventListener('resize', () => {
         navBarTemp.style.display = 'flex';
         if (state === 'close')
             navBar.style.height = '0px';
-        else 
+        else
             navBar.style.height = 'max-content'
         navBar.style.width = '100%';
     }
